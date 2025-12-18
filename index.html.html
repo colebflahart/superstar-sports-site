@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Superstar Sports — FSU breakers and Bucs fans. Live football breaks on Whatnot with sealed boxes & cases, great vibes, and fast shipping." />
+  <title>Superstar Sports — Live Card Breaks</title>
+  <style>
+    :root{
+      --bg:#070A12;
+      --card:#0D1224;
+      --card2:#0B1020;
+      --text:#EAF0FF;
+      --muted:#A8B3D6;
+      --brand:#782F40; /* FSU Garnet */
+      --brand2:#CEB888; /* FSU Gold */
+      --good:#37D67A;
+      --warn:#FFD166;
+      --bad:#FF4D6D;
+      --ring: rgba(120,47,64,.45);
+      --shadow: 0 20px 50px rgba(0,0,0,.45);
+      --radius: 20px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: linear-gradient(180deg, #782F40 0%, #5b2230 45%, #2a0f16 100%);
+      color:var(--text);
+      line-height:1.35;
+    }
+    a{color:inherit; text-decoration:none}
+
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 80px}
+
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; margin-bottom:22px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 30px rgba(124,92,255,.22);
+      display:grid; place-items:center;
+      font-weight:800;
+      letter-spacing:.5px;
+    }
+    .brand h1{font-size:16px; margin:0}
+    .brand p{margin:2px 0 0; color:var(--muted); font-size:12px}
+
+    .pillbar{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      padding:9px 12px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:12px;
+      backdrop-filter: blur(8px);
+    }
+    .pill strong{color:var(--text)}
+
+    .hero{
+      display:grid; grid-template-columns: 1.25fr .9fr;
+      gap:16px;
+      align-items:stretch;
+      margin: 16px 0 18px;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr;}
+      .pillbar{justify-content:flex-start}
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .inner{padding:22px}
+
+    .kicker{color:var(--brand2); font-weight:700; font-size:12px; letter-spacing:.16em; text-transform:uppercase}
+    .title{font-size:34px; margin:10px 0 10px; line-height:1.05}
+    .subtitle{color:var(--muted); font-size:15px; margin:0 0 18px; max-width:60ch}
+
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px; border-radius:14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:700;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      min-width: 160px;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(33,212,253,.65));
+      border-color: rgba(255,255,255,.16);
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(124,92,255,1), rgba(33,212,253,.75))}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+      margin-top:16px;
+    }
+    .span6{grid-column: span 6}
+    .span7{grid-column: span 7}
+    .span5{grid-column: span 5}
+    .span4{grid-column: span 4}
+    .span8{grid-column: span 8}
+    .span12{grid-column: span 12}
+    @media (max-width: 920px){
+      .span6,.span7,.span5,.span4,.span8{grid-column: span 12}
+    }
+
+    .sectionTitle{font-size:16px; margin:0 0 10px}
+    .small{color:var(--muted); font-size:13px; margin:0}
+
+    .list{display:grid; gap:10px; margin-top:14px}
+    .linkCard{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 14px;
+      border-radius:16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .linkCard:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.07)}
+    .linkLeft{display:flex; align-items:center; gap:12px}
+    .icon{
+      width:38px; height:38px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(124,92,255,.32), rgba(33,212,253,.22));
+      border: 1px solid rgba(255,255,255,.10);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+    }
+    .linkMeta{display:flex; flex-direction:column; gap:2px}
+    .linkMeta strong{font-size:14px}
+    .linkMeta span{font-size:12px; color:var(--muted)}
+    .arrow{opacity:.9; color:var(--muted)}
+
+    .badgeRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .badge{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--muted);
+    }
+    .badge.good{color:#d7ffe7; border-color: rgba(55,214,122,.35); background: rgba(55,214,122,.12)}
+
+    .faq details{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius:16px;
+      padding:14px 14px;
+    }
+    .faq summary{cursor:pointer; font-weight:700}
+    .faq p{margin:10px 0 0; color:var(--muted); font-size:13px}
+    .faq .list{gap:12px}
+
+    .formRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    input[type="text"], input[type="email"]{
+      flex:1;
+      min-width: 220px;
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus{box-shadow: 0 0 0 4px var(--ring); border-color: rgba(255,255,255,.20)}
+
+    footer{margin-top:22px; color:var(--muted); font-size:12px; text-align:center}
+
+    .note{font-size:12px; color:var(--muted); margin-top:10px}
+    .hr{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
+  
+    .hitwall-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:18px}
+    .hit-img{width:100%; height:260px; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,.14); box-shadow: 0 10px 30px rgba(0,0,0,.25)}
+    @media (max-width: 920px){.hitwall-grid{grid-template-columns:1fr} .hit-img{height:auto}}
+    .bucs-row{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:14px}
+    .bucs-badge{width:120px; height:120px; border-radius:24px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); display:grid; place-items:center}
+    .bucs-placeholder{font-weight:800; color:rgba(255,255,255,.75); text-align:center; padding:10px; font-size:12px}
+
+    /* Tighten vertical spacing a bit (less empty space) */
+    .wrap{padding:22px 18px 56px}
+    header{margin-bottom:16px}
+    .hero{margin: 10px 0 14px}
+    .card .inner{padding:20px}
+    .hit-img{height:290px}
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-label="logo">SS</div>
+        <div>
+          <h1 id="companyName">Superstar Sports</h1>
+          <p id="tagline">FSU breakers • Bucs fans • Sealed boxes & cases • Great vibes</p>
+        </div>
+      </div>
+      <div class="pillbar">
+        <div class="pill">Live Schedule: <strong id="nextLive">Wednesdays & Fridays • 6:00 PM ET</strong></div>
+        <div class="pill">Ships: <strong id="shipSpeed">Same/Next Day</strong></div>
+        <div class="pill">Based in: <strong id="location">Florida</strong></div>
+      </div>
+    </header>
+
+    <section class="hero">
+  <div class="card">
+    <div class="inner">
+      <div class="kicker">Superstar Sports</div>
+      <h2 class="title">Where everyone is a <span style="color:var(--brand2)">Superstar</span>.</h2>
+      <p class="subtitle">We’re Florida State students who love the Bucs, love the hobby, and love putting on a show. Superstar Sports runs high‑energy football breaks on Whatnot with great vibes, transparency, and fast shipping.</p>
+
+      <div class="ctaRow">
+        <a class="btn primary" id="whatnotLink" href="#" target="_blank" rel="noreferrer">Join us on Whatnot →</a>
+        <a class="btn" id="igLink" href="#" target="_blank" rel="noreferrer">Instagram →</a>
+        <a class="btn" id="discordLink" href="#" target="_blank" rel="noreferrer">Discord →</a>
+        <a class="btn" href="mailto:superstarsports1512@gmail.com">Email →</a>
+      </div>
+
+      <p class="note" style="margin-top:14px">
+        <strong>Email:</strong> <a href="mailto:superstarsports1512@gmail.com" style="color:var(--brand2); text-decoration:none">superstarsports1512@gmail.com</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="inner">
+      <div class="kicker">Next live break</div>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:18px; font-weight:900" id="nextLiveText">Wednesdays & Fridays • 6:00 PM ET</div>
+          <div class="small" style="margin-top:6px">Countdown to the next stream.</div>
+        </div>
+        <div style="text-align:right">
+          <div class="kicker" style="margin:0">Countdown</div>
+          <div style="font-size:34px; font-weight:1000; letter-spacing:.02em" id="countdown">--:--:--</div>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="badgeRow">
+        <span class="badge good">All hits ship</span>
+        <span class="badge">Rookie base ships</span>
+        <span class="badge">Vet base doesn’t ship unless stated</span>
+      </div>
+
+      <p class="note" style="margin-top:14px">
+        Tip: Hit the <strong>Whatnot</strong> link and tap <strong>Follow</strong> so you get the “We’re Live” notification.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="weekly" style="padding:26px 0">
+  <h3 style="font-size:28px; margin-bottom:10px">Live Schedule</h3>
+  <p class="small">Consistency builds trust. Bigger rooms follow.</p>
+  <ul style="margin-top:16px; line-height:1.8">
+    <li><strong>Wednesdays • 6:00 PM ET</strong> — Football breaks</li>
+    <li><strong>Fridays • 6:00 PM ET</strong> — Football breaks + surprises</li>
+  </ul>
+
+  <h3 style="font-size:28px; margin:40px 0 10px">What We Break</h3>
+  <p class="small">We focus on products people actually want to chase.</p>
+  <p style="max-width:700px">Prizm, Select, Mosaic, Optic, and other top football products. We aim to run at least one headline box every stream.</p>
+
+  <h3 style="font-size:28px; margin:40px 0 10px">Break Rules & Shipping</h3>
+  <p style="max-width:700px">All hits ship. Rookie base ships. Veteran base does not ship unless stated. Everything is opened live on camera and shipped fast with tracking.</p>
+
+</section>
+
+<section id="why" style="padding:26px 0">
+  <h3 style="font-size:28px; margin-bottom:10px">Why Break With Us</h3>
+  <p class="small">Fast shipping, clean streams, and a positive room where everyone feels welcome.</p>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card span4"><div class="inner">
+      <h4 class="sectionTitle">Positive vibes</h4>
+      <p class="small">We keep it fun, respectful, and high energy every stream.</p>
+    </div></div>
+    <div class="card span4"><div class="inner">
+      <h4 class="sectionTitle">Clean + transparent</h4>
+      <p class="small">Everything opened live on camera with clear callouts and fair rules.</p>
+    </div></div>
+    <div class="card span4"><div class="inner">
+      <h4 class="sectionTitle">Packed safe + tracked</h4>
+      <p class="small">Hits protected, labeled, and shipped fast with tracking.</p>
+    </div></div>
+  </div>
+</section>
+
+<section id="hitwall style="padding:26px 0">
+  <h3 style="font-size:28px; margin-bottom:10px">Hit Wall</h3>
+  <p class="small">Some of our favorite pulls. No captions needed.</p>
+
+  <div class="hitwall-grid">
+    <img class="hit-img" loading="lazy" src="IMG_2756.jpeg" alt="Hit" />
+    <img class="hit-img" loading="lazy" src="IMG_2755.jpeg" alt="Hit" />
+    <img class="hit-img" loading="lazy" src="IMG_1431.jpeg" alt="Hit" />
+    <img class="hit-img" loading="lazy" src="IMG_1445.jpeg" alt="Hit" />
+    <img class="hit-img" loading="lazy" src="IMG_1449.jpeg" alt="Hit" />
+    <img class="hit-img" loading="lazy" src="IMG_1451.jpeg" alt="Hit" />
+    <img class="hit-img" loading="lazy" src="IMG_1450.jpeg" alt="Hit" />
+  </div>
+</section>
+
+<section id="about" style="padding:26px 0">
+  <h3 style="font-size:28px; margin-bottom:10px">About Us</h3>
+  <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap">
+    <img src="30dd8d04-126d-40f6-a54b-8d465778650f.png" alt="Bucco Bruce" style="width:160px; border-radius:24px" />
+    <p style="max-width:720px">
+      We’re from Florida and currently attend <strong>Florida State University</strong>. We love all sports, but we’re massive <strong>Tampa Bay Buccaneers</strong> fans at heart. More than anything, we love cards and having a great time putting on a show for people on Whatnot. Positive energy, good vibes, and fun breaks. That’s what Superstar Sports is all about.
+    </p>
+  </div>
+</section>
+
+<footer>
+      <div>© <span id="year"></span> <span id="footerName">Superstar Sports</span> • Built for link-in-bio + desktop • <a href="mailto:superstarsports1512@gmail.com" style="color:var(--brand2); text-decoration:none">superstarsports1512@gmail.com</a></div>
+    </footer>
+  </div>
+
+  
+<script>
+  /* CONFIG */
+  const CONFIG = {
+    companyName: "Superstar Sports",
+    tagline: "FSU breakers • Bucs fans • Sealed boxes & cases • Great vibes",
+    location: "Tallahassee, FL",
+    links: {
+      whatnot: "https://www.whatnot.com/user/superstarsports",
+      instagram: "https://www.instagram.com/super.star.sports?igsh=MWk0OTZ3bnAxaWMyOQ%3D%3D&utm_source=qr",
+      discord: "https://discord.gg/qa4SsJwY"
+    }
+  };
+
+  const $ = (id) => document.getElementById(id);
+
+  // Safe set helper
+  const setText = (id, val) => { const el = $(id); if(el) el.textContent = val; };
+  const setHref = (id, val) => { const el = $(id); if(el) el.href = val; };
+
+  setText("companyName", CONFIG.companyName);
+  setText("footerName", CONFIG.companyName);
+  setText("tagline", CONFIG.tagline);
+  setText("location", CONFIG.location);
+
+  setHref("whatnotLink", CONFIG.links.whatnot);
+  setHref("igLink", CONFIG.links.instagram);
+  setHref("discordLink", CONFIG.links.discord);
+
+  setText("year", new Date().getFullYear());
+
+  // Countdown: next Wednesday or Friday at 6:00 PM America/New_York (ET)
+  const TZ = "America/New_York";
+  const LIVE_HOUR = 18, LIVE_MIN = 0;
+  const LIVE_DAYS = [3, 5]; // Wed=3, Fri=5 (Date.getDay())
+
+  function tzOffsetMinutes(date, timeZone){
+    const dtf = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      hour12: false,
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit"
+    });
+    const parts = dtf.formatToParts(date).reduce((acc, p) => {
+      if (p.type !== "literal") acc[p.type] = p.value;
+      return acc;
+    }, {});
+    const asUTC = Date.UTC(
+      Number(parts.year),
+      Number(parts.month) - 1,
+      Number(parts.day),
+      Number(parts.hour),
+      Number(parts.minute),
+      Number(parts.second)
+    );
+    return (asUTC - date.getTime()) / 60000;
+  }
+
+  // Convert a wall-clock time in ET to a real Date object (UTC-based)
+  function zonedTimeToDate(year, month, day, hour, minute, timeZone){
+    // initial guess
+    let utc = Date.UTC(year, month - 1, day, hour, minute, 0);
+    let d = new Date(utc);
+    let off = tzOffsetMinutes(d, timeZone);
+    // adjust once
+    d = new Date(utc - off * 60000);
+    // adjust again to be safe across DST edges
+    off = tzOffsetMinutes(d, timeZone);
+    return new Date(utc - off * 60000);
+  }
+
+  function getEtParts(now = new Date()){
+    const dtf = new Intl.DateTimeFormat("en-US", {
+      timeZone: TZ,
+      hour12: false,
+      year: "numeric", month: "2-digit", day: "2-digit",
+      weekday: "short"
+    });
+    const parts = dtf.formatToParts(now).reduce((acc, p) => {
+      if (p.type !== "literal") acc[p.type] = p.value;
+      return acc;
+    }, {});
+    return {
+      year: Number(parts.year),
+      month: Number(parts.month),
+      day: Number(parts.day),
+      weekday: parts.weekday // e.g., Wed
+    };
+  }
+
+  function nextLiveDate(now = new Date()){
+    // We build candidates for the next Wed/Fri in ET calendar
+    const et = getEtParts(now);
+    // Create an ET date object for "today" at 00:00 in ET, then compare weekdays using a Date in ET
+    // We'll iterate next 8 days and pick first that is Wed/Fri and time is in future.
+    for (let i = 0; i < 8; i++){
+      // Build a Date for et.year/et.month/et.day + i in ET by creating a Date at noon ET (safe) then extracting Y/M/D
+      const base = zonedTimeToDate(et.year, et.month, et.day, 12, 0, TZ);
+      const candidateNoon = new Date(base.getTime() + i * 24 * 3600 * 1000);
+      // Extract candidate ET Y/M/D
+      const candParts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, year:"numeric", month:"2-digit", day:"2-digit", weekday:"short"
+      }).formatToParts(candidateNoon).reduce((acc,p)=>{ if(p.type!=="literal") acc[p.type]=p.value; return acc; }, {});
+      const dow = candParts.weekday; // Wed/Fri
+      const isLiveDay = (dow === "Wed" || dow === "Fri");
+      if (!isLiveDay) continue;
+
+      const y = Number(candParts.year), m = Number(candParts.month), d = Number(candParts.day);
+      const live = zonedTimeToDate(y, m, d, LIVE_HOUR, LIVE_MIN, TZ);
+      if (live.getTime() > now.getTime()) return live;
+    }
+    // fallback: next week Wednesday
+    return new Date(now.getTime() + 7 * 24 * 3600 * 1000);
+  }
+
+  function fmtCountdown(ms){
+    const total = Math.max(0, Math.floor(ms / 1000));
+    const h = String(Math.floor(total / 3600)).padStart(2, "0");
+    const m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+    const s = String(total % 60).padStart(2, "0");
+    return `${h}:${m}:${s}`;
+  }
+
+  function fmtNextLiveLabel(date){
+    const label = new Intl.DateTimeFormat("en-US", {
+      timeZone: TZ, weekday: "long"
+    }).format(date);
+    return `${label} • 6:00 PM ET`;
+  }
+
+  const countdownEl = $("countdown");
+  const nextLiveEl = $("nextLiveText");
+  let target = nextLiveDate();
+
+  function tick(){
+    const now = new Date();
+    if (now.getTime() >= target.getTime()) target = nextLiveDate(now);
+    if (nextLiveEl) nextLiveEl.textContent = fmtNextLiveLabel(target);
+    if (countdownEl) countdownEl.textContent = fmtCountdown(target.getTime() - now.getTime());
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+
+</html>
